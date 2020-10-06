@@ -5,7 +5,7 @@
 			<h2>Asignaturas activas</h2>
 		</div>
 		<section class="col-md-12">
-			<table class="table table-hover table-striped table-borderless">
+			<table class="table table-hover table-striped table-borderless" id="myTable">
 				<thead class="thead-dark">
 					<tr>
 						<th>#</th>

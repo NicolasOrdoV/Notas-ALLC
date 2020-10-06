@@ -2,3 +2,9 @@
 <script src="Assets/js/popper.min.js"></script>
 <script src="Assets/js/bootstrap.min.js"></script>
 <script src="Assets/js/validation.js"></script>
+<script src="Assets/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+	$(document).ready( function () {
+	    $('#myTable').DataTable();
+	} );
+</script>

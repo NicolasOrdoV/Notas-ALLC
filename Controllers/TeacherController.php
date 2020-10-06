@@ -1,5 +1,10 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
 require 'Models/Teacher.php';
 require 'Models/Profile.php';
 
@@ -38,13 +43,49 @@ class TeacherController
 	public function save()
 	{
 		$this->model->newTeacher($_REQUEST);
-		$succesful = "docente registrado con exito!";
-		require 'Views/Layout.php';
-		$profiles = $this->profile->getAll();
-		require 'Views/Teachers/new.php';
-		require 'Views/Footer.php';
-		require 'Views/Scripts.php';
-		return $succesful;
+		$mail = new PHPMailer(true);
+		try {
+		    //Server settings
+		    $mail->SMTPDebug = 0;                      // Enable verbose debug output
+		    $mail->isSMTP();                                            // Send using SMTP
+		    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+		    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+		    $mail->Username   = 'nikomegathet666@gmail.com';                     // SMTP username
+		    $mail->Password   = '1000464327bat';                               // SMTP password
+		    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+		    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+		    //Recipients
+		    $mail->setFrom('nikomegathet666@gmail.com');
+		    $mail->addAddress($_POST['CORREO']);     // Add a recipient
+
+		    // Content
+		    $mail->isHTML(true);                                  // Set email format to HTML
+		    $mail->Subject = 'CREACION DE CUENTA';
+		    $mail->Body    = '<p>Estimado '.$_POST['NOMBRES'].' :</p><br>
+		                     <p>Su cuenta se ha creado con exito, para ingresar se debe tener en cuenta sus siguientes items:</p><br>
+		                     <div>
+		                     	<h2>Usuario:</h2><br>
+		                     	<p>'.$_POST['CORREO'].'</p>
+		                     </div>
+		                     <div>
+		                     	<h2>Contraseña:</h2><br>
+		                     	<p>'.$_POST['CLAVE'].'</p>
+		                     </div><br>
+		                     <p>Recuerde cambiar su contraseña una vez entre por primera vez al sistema</p>
+		                     <a href="http://localhost/Notas/">Iniciar Sesion</a>';
+		    $mail->send();
+
+		    $succesful = "Docente registrado con exito, correo enviado al docente registrado";
+			require 'Views/Layout.php';
+			$profiles = $this->profile->getAll();
+			require 'Views/Teachers/new.php';
+			require 'Views/Footer.php';
+			require 'Views/Scripts.php';
+			return $succesful;
+		} catch (Exception $e) {
+		    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+		}
 	}
 
 	public function myProfile()

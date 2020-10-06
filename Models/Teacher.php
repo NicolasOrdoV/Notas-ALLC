@@ -20,7 +20,7 @@ class Teacher
 	{
 		try {
 			$strSql = "SELECT d.*,p.NOMBRE as perfil FROM docentes d
-        	INNER JOIN perfil p ON p.ID_PERFIL = d.ID_PERFIL WHERE d.ID_PERFIL = 1";
+        	INNER JOIN perfil p ON p.ID_PERFIL = d.ID_PERFIL WHERE d.ID_PERFIL = 1 OR d.ID_PERFIL = 2";
         	$query = $this->pdo->select($strSql);
         	return $query;
 		} catch (PDOException $e) {

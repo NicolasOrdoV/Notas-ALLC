@@ -6,7 +6,7 @@
 			<a href="?controller=course&method=new" class="btn btn-success">+Agregar</a>
 		</div>
 		<section class="col-md-12">
-			<table class="table table-hover table-striped table-borderless">
+			<table class="table table-hover table-striped table-borderless" id="myTable">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">#</th>

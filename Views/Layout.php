@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Notas ALLC</title>
 	<link rel="stylesheet" href="Assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="Assets/css/jquery.dataTables.min.css">
 	<link rel="icon" href="Assets/img/escudo.jpg">
 </head>
 <body>
