@@ -26,11 +26,13 @@
 			        	<a class="nav-link text-success" href="?controller=teacher">Docentes</a>
 			        </li>
 		        <?php } ?>
+		        <?php if ($_SESSION['user']->ID_PERFIL == 2 || $_SESSION['user']->ID_PERFIL == 3) { ?>
+		        	<li class="nav-item active">
+		        		<a class="nav-link text-white" href="?controller=student">Estudiantes</a>
+		            </li>
+		        <?php } ?>
 		        <li class="nav-item active">
-		        	<a class="nav-link text-white" href="#">Estudiantes</a>
-		        </li>
-		        <li class="nav-item active">
-		        	<a class="nav-link text-success" href="#">Notas</a>
+		        	<a class="nav-link text-success" href="?controller=note">Notas</a>
 		        </li>
 		        <li class="nav-item active">
 		        	<a class="nav-link text-white" href="?controller=profile">Perfiles</a>
