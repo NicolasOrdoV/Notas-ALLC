@@ -30,6 +30,7 @@
 							<td><?php echo $student->curso ?></td>
 							<td>
 								<a href="?controller=note&method=new&id=<?php echo $student->ID_ESTUDIANTE?>" class="btn btn-warning"><i class="far fa-clipboard"></i></a>
+								<a href="?controller=note&method=edit&id=<?php echo $student->ID_ESTUDIANTE?>" class="btn btn-info">+</a>
 							</td>
 						</tr>
 					<?php } ?>

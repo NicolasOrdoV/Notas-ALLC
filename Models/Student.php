@@ -36,4 +36,17 @@ class Student
 			die($e->getMessage());
 		}
 	}
+
+	public function getById($id)
+	{
+		try {
+			$strSql = "SELECT e.*, c.CURSO as curso FROM estudiantes e
+			INNER JOIN cursos c on c.ID_CURSO = e.ID_CURSO WHERE ID_ESTUDIANTE = :ID_ESTUDIANTE";
+			$array = ['ID_ESTUDIANTE' => $id];
+			$query = $this->pdo->select($strSql, $array);
+			return $query;
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
+	}
 }

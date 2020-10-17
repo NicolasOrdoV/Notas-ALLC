@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2020 a las 17:50:42
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 17-10-2020 a las 02:31:49
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -148,6 +148,13 @@ CREATE TABLE `estudiantes` (
   `ID_CURSO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `estudiantes`
+--
+
+INSERT INTO `estudiantes` (`ID_ESTUDIANTE`, `NOMBRES`, `APELLIDOS`, `CORREO`, `TELEFONO`, `FECHA_NACIMIENTO`, `ID_CURSO`) VALUES
+(1, 'Luisa', 'Daza', 'luisa@outlock.com', '322514789', '2020-10-15', 21);
+
 -- --------------------------------------------------------
 
 --
@@ -163,6 +170,13 @@ CREATE TABLE `nota` (
   `NOTA2` decimal(18,2) DEFAULT NULL,
   `NOTA3` decimal(18,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `nota`
+--
+
+INSERT INTO `nota` (`ID_NOTA`, `ID_DOCENTE`, `ID_ESTUDIANTE`, `ID_ASIGNATURA`, `NOTA1`, `NOTA2`, `NOTA3`) VALUES
+(1, 1, 1, 2, '3.00', '4.00', '2.00');
 
 -- --------------------------------------------------------
 
@@ -255,13 +269,13 @@ ALTER TABLE `docentes`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `ID_ESTUDIANTE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ESTUDIANTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `ID_NOTA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_NOTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`

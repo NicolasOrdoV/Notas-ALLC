@@ -39,4 +39,37 @@ class Note
 			die($e->getMessage());
 		}
 	}
+
+	public function newNotes($data)
+	{
+		try {
+			$this->pdo->insert('nota' , $data);
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
+	}
+
+	public function verifyNotes($id)
+	{
+		try {
+			$strSql = "SELECT n.*,e.NOMBRES as nombres, e.APELLIDOS as apellidos, e.ID_ESTUDIANTE as id, a.NOMBRE as asignatura FROM nota n
+			INNER JOIN estudiantes e ON e.ID_ESTUDIANTE = n.ID_ESTUDIANTE
+			INNER JOIN asignatura a ON a.ID_ASIGNATURA = n.ID_ASIGNATURA";
+			$array = ['ID_NOTA' => $id];
+			$query = $this->pdo->select($strSql, $array);
+			return $query;
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
+	}
+
+	public function updateNotes($data)
+	{
+		try {
+			$strWhere = "ID_NOTA=" .$data['ID_NOTA'];
+			$this->pdo->update('nota' , $data, $strWhere);
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
+	}
 }
